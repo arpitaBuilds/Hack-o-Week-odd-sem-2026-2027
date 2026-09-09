@@ -5,14 +5,14 @@ A collection of projects built while working toward full-stack development and d
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat&logo=scikitlearn&logoColor=white)
 ## Projects in this Repo
-| Project | Type | Stack |
-|---------|------|-------|
-| [Todo List REST API](#todo-list-rest-api) | Backend / REST API | Node.js (native `http` module) |
-| [E-Commerce Sales Analysis](#e-commerce-sales-analysis) | Data Analysis | Python, Pandas, Matplotlib, Seaborn |
-| [Math for ML — Interactive Intuition](#math-for-ml--interactive-intuition) | ML Foundations | Python, NumPy, SymPy, Matplotlib |
-| [Regression & Classification Basics](#regression--classification-basics) | ML Foundations | Python, scikit-learn |
-| [Feature Engineering & Model Evaluation](#feature-engineering-scaling--model-evaluation) | ML Foundations | Python, scikit-learn |
-| [Pipelines & Clustering](#scikit-learn-pipelines--clustering) | ML Foundations | Python, scikit-learn, SciPy |
+| Project | Week | Type | Stack |
+|---------|------|------|-------|
+| [Todo List REST API](#todo-list-rest-api) | Week 1-2 | Backend / REST API | Node.js (native `http` module) |
+| [E-Commerce Sales Analysis](#e-commerce-sales-analysis) | Week 2-4 | Data Analysis | Python, Pandas, Matplotlib, Seaborn |
+| [Math for ML — Interactive Intuition](#math-for-ml--interactive-intuition) | Week 5-6 | ML Foundations | Python, NumPy, SymPy, Matplotlib |
+| [Regression & Classification Basics](#regression--classification-basics) | Week 7-8 | ML Foundations | Python, scikit-learn |
+| [Feature Engineering & Model Evaluation](#feature-engineering-scaling--model-evaluation) | Week 9-10 | ML Foundations | Python, scikit-learn |
+| [Pipelines & Clustering](#scikit-learn-pipelines--clustering) | Week 9-10 (updated) | ML Foundations | Python, scikit-learn, SciPy |
 ## Repository Structure
 ```
 learning-projects/
