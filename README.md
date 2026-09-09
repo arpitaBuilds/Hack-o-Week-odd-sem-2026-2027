@@ -11,6 +11,8 @@ A collection of projects built while working toward full-stack development and d
 | [E-Commerce Sales Analysis](#e-commerce-sales-analysis) | Data Analysis | Python, Pandas, Matplotlib, Seaborn |
 | [Math for ML — Interactive Intuition](#math-for-ml--interactive-intuition) | ML Foundations | Python, NumPy, SymPy, Matplotlib |
 | [Regression & Classification Basics](#regression--classification-basics) | ML Foundations | Python, scikit-learn |
+| [Feature Engineering & Model Evaluation](#feature-engineering-scaling--model-evaluation) | ML Foundations | Python, scikit-learn |
+| [Pipelines & Clustering](#scikit-learn-pipelines--clustering) | ML Foundations | Python, scikit-learn, SciPy |
 ## Repository Structure
 ```
 learning-projects/
@@ -23,7 +25,9 @@ learning-projects/
 │
 ├── ml-foundations/
 │   ├── Math_for_ML_Week5-6.ipynb
-│   └── Regression_Classification_Basics.ipynb
+│   ├── Regression_Classification_Basics.ipynb
+│   ├── Model_Evaluation_Feature_Engineering.ipynb
+│   └── Pipelines_and_Clustering.ipynb
 │
 └── README.md
 ```
@@ -239,6 +243,84 @@ Building this notebook helped me understand:
 - The practical difference between regression (predicting a number) and classification (predicting a category)
 - How regularization (Ridge/Lasso) controls overfitting, and how that idea carries over into gradient-boosted models
 - Why simple models like Logistic Regression and KNN are useful baselines before reaching for more complex models
+---
+# Feature Engineering, Scaling & Model Evaluation
+A hands-on walkthrough of the checklist every model needs before and after training — handling missing data, engineering features, scaling, and properly evaluating a classifier on real medical data.
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat&logo=scikitlearn&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=flat&logo=plotly&logoColor=white)
+## Features
+- Handling missing data with `SimpleImputer` (median strategy), on a real medical dataset with simulated missing values
+- Feature engineering: ratio features and binning a continuous column into categories
+- Feature scaling with `StandardScaler`, with a before/after distribution comparison
+- Stratified train/test split for imbalanced medical data
+- 5-fold cross-validation for a reliable performance estimate
+- Confusion matrix, precision, recall, and F1-score, with medical-context interpretation (false negatives vs. false positives)
+- ROC curve and AUC score
+## Tech Stack
+- **Language:** Python
+- **ML Library:** scikit-learn
+- **Data Handling:** Pandas
+- **Visualization:** Matplotlib
+## Project Structure
+```
+ml-foundations/
+│
+└── Model_Evaluation_Feature_Engineering.ipynb   # Full evaluation checklist, section by section
+```
+## Getting Started
+### Prerequisites
+- [Jupyter](https://jupyter.org) installed, or any notebook environment
+### Running It
+```bash
+jupyter notebook Model_Evaluation_Feature_Engineering.ipynb
+```
+Run all cells top to bottom. Uses scikit-learn's built-in Breast Cancer Wisconsin dataset by default — swap in any CSV with a binary target column using the snippet provided in the notebook's intro cell.
+## What I Learned
+Building this notebook helped me understand:
+- Why `stratify=y` matters for imbalanced medical classification data
+- Why accuracy alone is misleading, and why recall matters more than precision when missing a positive case is costly
+- How cross-validation gives a more trustworthy performance estimate than a single train/test split
+- How ROC-AUC compares models independently of the classification threshold
+---
+# scikit-learn Pipelines & Clustering
+A practical look at production-style scikit-learn workflows using `Pipeline`, followed by three unsupervised clustering methods and when each one is the right tool.
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat&logo=scikitlearn&logoColor=white)
+![SciPy](https://img.shields.io/badge/SciPy-8CAAE6?style=flat&logo=scipy&logoColor=white)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=flat&logo=plotly&logoColor=white)
+## Features
+- Bundling `SimpleImputer` + `StandardScaler` + `LogisticRegression` into a single `Pipeline`, and why that prevents data leakage
+- Cross-validation with a pipeline, so every fold gets its own correctly-fit preprocessing
+- K-Means clustering with the elbow method for choosing `k`
+- Hierarchical (Agglomerative) clustering with a dendrogram visualization
+- DBSCAN density-based clustering, including a side-by-side comparison showing where K-Means fails on non-round clusters
+- Outlier/noise detection as a natural byproduct of DBSCAN
+## Tech Stack
+- **Language:** Python
+- **ML Library:** scikit-learn
+- **Scientific Computing:** SciPy (dendrograms)
+- **Visualization:** Matplotlib
+## Project Structure
+```
+ml-foundations/
+│
+└── Pipelines_and_Clustering.ipynb   # Pipelines section, then all three clustering methods
+```
+## Getting Started
+### Prerequisites
+- [Jupyter](https://jupyter.org) installed, or any notebook environment
+### Running It
+```bash
+jupyter notebook Pipelines_and_Clustering.ipynb
+```
+Run all cells top to bottom — uses the same built-in Breast Cancer dataset for the pipeline section, and synthetic blob/moon data for the clustering section.
+## What I Learned
+Building this notebook helped me understand:
+- What data leakage is, and how `Pipeline` prevents it automatically during cross-validation
+- The difference between choosing `k` upfront (K-Means) vs. deciding cluster count after seeing the structure (dendrogram)
+- Why density-based clustering (DBSCAN) can succeed where centroid-based clustering (K-Means) fails, and how it naturally flags outliers
 ---
 ## Author
 **Arpita** — ArpitaBuilds
