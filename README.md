@@ -8,7 +8,7 @@ A collection of projects built while working toward full-stack development and d
 | Project | Week | Type | Stack |
 |---------|------|------|-------|
 | [Todo List REST API](#todo-list-rest-api) | Week 1-2 | Backend / REST API | Node.js (native `http` module) |
-| [E-Commerce Sales Analysis](#e-commerce-sales-analysis) | Week 2-4 | Data Analysis | Python, Pandas, Matplotlib, Seaborn |
+| [E-Commerce Sales Analysis](#e-commerce-sales-analysis) | Week 3-4 | Data Analysis | Python, Pandas, Matplotlib, Seaborn |
 | [Math for ML — Interactive Intuition](#math-for-ml--interactive-intuition) | Week 5-6 | ML Foundations | Python, NumPy, SymPy, Matplotlib |
 | [Regression & Classification Basics](#regression--classification-basics) | Week 7-8 | ML Foundations | Python, scikit-learn |
 | [Feature Engineering & Model Evaluation](#feature-engineering-scaling--model-evaluation) | Week 9 | ML Foundations | Python, scikit-learn |
