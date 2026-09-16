@@ -13,6 +13,7 @@ A collection of projects built while working toward full-stack development and d
 | [Regression & Classification Basics](#regression--classification-basics) | Week 7-8 | ML Foundations | Python, scikit-learn |
 | [Feature Engineering & Model Evaluation](#feature-engineering-scaling--model-evaluation) | Week 9 | ML Foundations | Python, scikit-learn |
 | [Pipelines & Clustering](#scikit-learn-pipelines--clustering) | Week 10 | ML Foundations | Python, scikit-learn, SciPy |
+| [Dimensionality Reduction: PCA & t-SNE](#dimensionality-reduction-pca--t-sne) | Week 11-12 | ML Foundations | Python, scikit-learn, Matplotlib |
 ## Repository Structure
 ```
 learning-projects/
@@ -27,7 +28,8 @@ learning-projects/
 │   ├── Math_for_ML_Week5-6.ipynb
 │   ├── Regression_Classification_Basics.ipynb
 │   ├── Model_Evaluation_Feature_Engineering.ipynb
-│   └── Pipelines_and_Clustering.ipynb
+│   ├── Pipelines_and_Clustering.ipynb
+│   └── Dimensionality_Reduction_PCA_tSNE.ipynb
 │
 └── README.md
 ```
@@ -321,6 +323,43 @@ Building this notebook helped me understand:
 - What data leakage is, and how `Pipeline` prevents it automatically during cross-validation
 - The difference between choosing `k` upfront (K-Means) vs. deciding cluster count after seeing the structure (dendrogram)
 - Why density-based clustering (DBSCAN) can succeed where centroid-based clustering (K-Means) fails, and how it naturally flags outliers
+---
+# Dimensionality Reduction: PCA & t-SNE
+An intuition-first look at how PCA and t-SNE compress high-dimensional data down to 2D for visualization, including when to reach for which one.
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat&logo=scikitlearn&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat&logo=numpy&logoColor=white)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=flat&logo=plotly&logoColor=white)
+## Features
+- PCA: compressing 30 features down to 2 principal components, with an explained-variance breakdown
+- A cumulative variance plot to decide how many components are "enough"
+- t-SNE: visualizing 64-dimensional handwritten digit images in 2D, with a direct PCA vs. t-SNE side-by-side comparison
+- Perplexity comparison (5 vs. 30 vs. 100) showing its effect on cluster tightness
+- A PCA vs. t-SNE decision table — when to use which, and why
+## Tech Stack
+- **Language:** Python
+- **ML Library:** scikit-learn
+- **Math & Arrays:** NumPy
+- **Visualization:** Matplotlib
+## Project Structure
+```
+ml-foundations/
+│
+└── Dimensionality_Reduction_PCA_tSNE.ipynb   # PCA section, then t-SNE section, then comparison
+```
+## Getting Started
+### Prerequisites
+- [Jupyter](https://jupyter.org) installed, or any notebook environment
+### Running It
+```bash
+jupyter notebook Dimensionality_Reduction_PCA_tSNE.ipynb
+```
+Run all cells top to bottom — uses scikit-learn's built-in Breast Cancer and Digits datasets, so no external dataset is required. The t-SNE cells take a little longer to run than the rest.
+## What I Learned
+Building this notebook helped me understand:
+- How PCA connects directly back to eigenvectors/eigenvalues from the linear algebra notebook
+- Why PCA distances are mathematically meaningful but t-SNE distances are not
+- Why t-SNE separates non-linear clusters more clearly than PCA, and why that comes at the cost of speed and reproducibility
 ---
 ## Author
 **Arpita** — ArpitaBuilds
