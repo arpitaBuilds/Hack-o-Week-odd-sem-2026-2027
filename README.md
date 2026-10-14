@@ -14,6 +14,8 @@ A collection of projects built while working toward full-stack development and d
 | [Feature Engineering & Model Evaluation](#feature-engineering-scaling--model-evaluation) | Week 9 | ML Foundations | Python, scikit-learn |
 | [Pipelines & Clustering](#scikit-learn-pipelines--clustering) | Week 10 | ML Foundations | Python, scikit-learn, SciPy |
 | [Dimensionality Reduction: PCA & t-SNE](#dimensionality-reduction-pca--t-sne) | Week 11-12 | ML Foundations | Python, scikit-learn, Matplotlib |
+| [Ensemble Methods, Bias-Variance & Regularization](#ensemble-methods-bias-variance--regularization) | Week 13-14 | ML Foundations | Python, scikit-learn, XGBoost, LightGBM |
+| [Model Deployment & Neural Network from Scratch](#model-deployment--neural-network-from-scratch) | Week 15-16 | Deep Learning Basics | Python, NumPy, scikit-learn, joblib |
 ## Repository Structure
 ```
 learning-projects/
@@ -29,7 +31,9 @@ learning-projects/
 │   ├── Regression_Classification_Basics.ipynb
 │   ├── Model_Evaluation_Feature_Engineering.ipynb
 │   ├── Pipelines_and_Clustering.ipynb
-│   └── Dimensionality_Reduction_PCA_tSNE.ipynb
+│   ├── Dimensionality_Reduction_PCA_tSNE.ipynb
+│   ├── Ensemble_BiasVariance_Regularization.ipynb
+│   └── Deployment_and_NeuralNet_From_Scratch.ipynb
 │
 └── README.md
 ```
@@ -360,6 +364,95 @@ Building this notebook helped me understand:
 - How PCA connects directly back to eigenvectors/eigenvalues from the linear algebra notebook
 - Why PCA distances are mathematically meaningful but t-SNE distances are not
 - Why t-SNE separates non-linear clusters more clearly than PCA, and why that comes at the cost of speed and reproducibility
+---
+# Ensemble Methods, Bias-Variance & Regularization
+A practical walkthrough of bagging vs. boosting (including XGBoost and LightGBM), and the bias-variance tradeoff behind overfitting, underfitting, and regularization.
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat&logo=scikitlearn&logoColor=white)
+![XGBoost](https://img.shields.io/badge/XGBoost-EC6B23?style=flat)
+![LightGBM](https://img.shields.io/badge/LightGBM-02A04B?style=flat)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=flat&logo=plotly&logoColor=white)
+## Features
+- Bagging: a single deep decision tree vs. Bagging vs. Random Forest, comparing train/test accuracy
+- Boosting: AdaBoost, Gradient Boosting, XGBoost, and LightGBM side by side
+- XGBoost test accuracy as boosting rounds increase
+- Bias-variance tradeoff demo: 50 models fit on different random datasets at polynomial degree 1, 4, and 15
+- Overfitting vs. underfitting diagnosis: train vs. test accuracy across increasing XGBoost `max_depth`
+- Regularization: effect of XGBoost's `reg_lambda` (L2) on the train/test gap
+## Tech Stack
+- **Language:** Python
+- **ML Libraries:** scikit-learn, XGBoost, LightGBM
+- **Visualization:** Matplotlib
+## Project Structure
+```
+ml-foundations/
+│
+└── Ensemble_BiasVariance_Regularization.ipynb   # Bagging, boosting, bias-variance, regularization
+```
+## Getting Started
+### Prerequisites
+- [Jupyter](https://jupyter.org) installed, or any notebook environment
+- XGBoost and LightGBM installed
+### Installation & Run
+```bash
+pip install xgboost lightgbm
+jupyter notebook Ensemble_BiasVariance_Regularization.ipynb
+```
+Run all cells top to bottom — uses scikit-learn's built-in Breast Cancer Wisconsin dataset, so no external dataset is required.
+## What I Learned
+Building this notebook helped me understand:
+- Bagging reduces variance by averaging independent models, while boosting reduces bias by fixing the previous model's mistakes sequentially
+- How to read a train vs. test accuracy gap to tell overfitting from underfitting
+- Why the bias-variance tradeoff explains the underfit / sweet-spot / overfit pattern as model complexity grows
+- How L1/L2 regularization (`reg_alpha`, `reg_lambda` in XGBoost) controls overfitting and why it is a hyperparameter to tune, not leave at default
+---
+# Model Deployment & Neural Network from Scratch
+Saving and loading trained models with `pickle` and `joblib`, plus a neural network built from scratch in NumPy, covering perceptrons, activation functions, loss functions, backpropagation, and the SGD and Adam optimizers.
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat&logo=numpy&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat&logo=scikitlearn&logoColor=white)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=flat&logo=plotly&logoColor=white)
+## Features
+- Saving a full preprocessing + model pipeline with `pickle` and `joblib` (including compression), and checking that predictions are identical after loading
+- XGBoost native `save_model` / `load_model`, and a minimal predict function showing how an API would load a model once at startup
+- Perceptron learning AND / OR logic gates, and failing on XOR
+- Sigmoid, Tanh, ReLU, and Leaky ReLU with their derivatives
+- Forward and backward propagation worked through by hand, verified with a numerical gradient check
+- Loss functions: MSE vs. binary cross-entropy, including why cross-entropy keeps a stronger gradient on confident mistakes
+- SGD vs. Adam implemented from scratch, including a learning-rate sensitivity comparison
+- A one-hidden-layer neural network in NumPy (forward pass, BCE loss, backprop, SGD/Adam updates), trained on the Breast Cancer dataset and compared with Logistic Regression
+- The same network solving XOR with a hidden layer
+- Saving the from-scratch model as weights + scaler instead of pickling a custom class
+## Tech Stack
+- **Language:** Python
+- **Math & Arrays:** NumPy
+- **ML Library:** scikit-learn (data, scaler, baseline), XGBoost
+- **Serialization:** pickle, joblib
+- **Visualization:** Matplotlib
+## Project Structure
+```
+ml-foundations/
+│
+└── Deployment_and_NeuralNet_From_Scratch.ipynb   # Deployment basics, then neural net from scratch
+```
+## Getting Started
+### Prerequisites
+- [Jupyter](https://jupyter.org) installed, or any notebook environment
+- XGBoost installed (used for the native save/load example)
+### Installation & Run
+```bash
+pip install xgboost joblib
+jupyter notebook Deployment_and_NeuralNet_From_Scratch.ipynb
+```
+Run all cells top to bottom — uses scikit-learn's built-in Breast Cancer dataset plus tiny logic-gate datasets. The notebook creates a `saved_models/` folder next to itself for the model files.
+## What I Learned
+Building this notebook helped me understand:
+- The train once, save, load once at startup, predict per request flow, and its gotchas: never unpickle untrusted files, version mismatches, and saving the whole pipeline
+- Why a single perceptron can only draw a straight line, and why hidden layers with non-linear activations are needed
+- How backpropagation is the chain rule applied layer by layer, and how gradient checking verifies it
+- Why SGD needs a carefully tuned learning rate while Adam is much less sensitive to it
+- Why saving weights and preprocessing is safer than pickling a custom class
+
 ---
 ## Author
 **Arpita** — ArpitaBuilds
